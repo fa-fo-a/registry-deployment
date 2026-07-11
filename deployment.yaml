@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry
+  namespace: registry
+  labels:
+    app: registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: registry
+  template:
+    metadata:
+      labels:
+        app: registry
+    spec:
+      hostNetwork: false
+      containers:
+      - name: php
+        image: registry:3.1.1
+        resources:
+          limits:
+            memory: 80Mi
+            cpu: 0.08
