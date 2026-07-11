@@ -4,6 +4,7 @@ metadata:
   name: registry
   namespace: registry
 spec:
+  type: LoadBalancer
   selector:
     app: registry
   ports:
