@@ -23,3 +23,10 @@ spec:
           limits:
             memory: 80Mi
             cpu: 0.08
+        volumeMounts:
+        - name: registry-data
+          mountPath: /var/lib/registry
+      volumes:
+      - name: registry-data
+        persistentVolumeClaim:
+          claimName: registry

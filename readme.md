@@ -12,16 +12,11 @@ Keep in mind if you change namespace you will have to tweak accordingly some com
 same as with namespace app name in repo "registry". same can be replaced by mass replace
 - apply namespace by `kubectl create namespace registry`<br>
 heads up in here. if you changed namespace - tweak command accordingly
+- `kubectl apply -f pvc.yaml`<br>
+this creates a PersistentVolume backed by hostPath `/home/alex/registry` on the node, and a PersistentVolumeClaim bound to it, so registry data survives pod restarts. Change the `hostPath.path` if you want data stored elsewhere. Since hostPath ties data to a specific node, this only works reliably on a single-node cluster (e.g. k3s) unless you add a node affinity/selector
 - `kubectl apply -f deployment.yaml`<br>
 make sure it works (get pods) - if not, something of previos was done wrong. If error with image pull, cause no latest tag expected in your set up you may fix it by optional commands below
 - `kubectl apply -f service.yaml`
-- edit issuer.yaml by placing your mail in placeholder
-- edit ingress.yaml by replacing placeholders of domain in there to preferred one
-- `kubectl apply -f ingress.yaml`
-  - keep in mind that secrets have to be [base64-encoded strings](https://kubernetes.io/docs/concepts/configuration/secret/#restriction-names-data).
-  -  To apply them [here's example how to](https://kubernetes.io/docs/concepts/configuration/secret/#use-cases)<br />
-Do not forget to `kubectl apply -f secrets.yaml`
-- (optional) if you apply secrets you may apply (as i do) them as env variables in container. check `deployment.yaml`, uncomment and tweak according to own needs example in there, reapply deployment
 
 # knowledge sources
 - https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
