@@ -1,7 +1,7 @@
 # prerequisites
 
 Repository main goal is to get reused by author and, maybe, by people who find it useful. Currently author's setup is baremetal home server with [k3s](https://k3s.io) installed on it. So whole repository for sure works on k3s if folow installation guide below.<br>
-As result of effort done you gonna get launched instance of application, with domain you configure and ssl above it
+As result of effort done you gonna get launched instance of application.
 
 # installation
 - Get the repo files, place them whenever it needed
